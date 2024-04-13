@@ -22,17 +22,37 @@ function generateTable() {
       for (var i = 0; i < rows; i++) {
         table += "<tr>";
         for (var j = 0; j < cols; j++) {
-          table += "<td>Row " + (i + 1) + ", Col " + (j + 1) + "</td>";
+          table += "<td> (" + (i + 1) + "," + (j + 1) + ")</td>";
         }
         table += "</tr>";
       }
       table += "</table>";
       var tableElement = document.createElement("div");
       tableElement.innerHTML = table;
-      document.body.appendChild(tableElement); // Append table to body
-      document.getElementById("b2").style.display = "inline"; // Show Add Column button
-      document.getElementById("b3").style.display = "inline"; // Show Add Row button
+      document.body.appendChild(tableElement); // Append the table to the bode
+      document.getElementById("b2").style.display = "inline";
+      document.getElementById("b3").style.display = "inline";
     }
+
+	function addColumn() {
+      var table = document.querySelector("table");
+      var rowCount = table.rows.length;
+      for (var i = 0; i < rowCount; i++) {
+        var cell = table.rows[i].insertCell(-1);
+        cell.innerHTML = "New Col";
+      }
+    }
+
+    function addRow() {
+      var table = document.querySelector("table");
+      var row = table.insertRow(-1);
+      var colCount = table.rows[0].cells.length;
+      for (var i = 0; i < colCount; i++) {
+        var cell = row.insertCell(-1);
+        cell.innerHTML = "New Row";
+      }
+    }
+
 
 
   </script>
